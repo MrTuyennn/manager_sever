@@ -1,10 +1,10 @@
 const Employee = require('../models/Employee');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
 
 // tạo mới employee
 exports.createEmployee = async (req,res) =>{
      let employee = await Employee({ 
-         _id : new mongoose.Types.ObjectId,
+        //  _id : new mongoose.Types.ObjectId,
          name : req.body.name,
          phone : req.body.phone,
          email : req.body.email,
@@ -31,7 +31,7 @@ exports.createEmployee = async (req,res) =>{
 exports.deleteEmployee = function(req, res) {
     console.log(req.body.id);
     console.log(req.params.id);
-    Employee.findByIdAndDelete({_id:req.body.id},(err,data)=>{
+    Employee.findByIdAndDelete(req.body.id,(err,data)=>{
        if(err){
            console.log(err);
            res.send("err");
